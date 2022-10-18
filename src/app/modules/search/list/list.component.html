@@ -1,0 +1,68 @@
+<ng-template #loading>
+  <div class="text-center py-4">
+    LOADING...
+  </div>
+</ng-template>
+<div class="page py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-1"></div>
+      <div class="col-12 col-sm-10">
+        <form
+          class="d-flex"
+          role="search"
+          [formGroup]="form"
+          (submit)="onSubmit()"
+        >
+          <input
+            class="form-control me-2"
+            type="search"
+            formControlName="keyword"
+            placeholder="Search Cocktail"
+            aria-label="Search"
+          />
+          <button
+            class="btn btn-outline-success"
+            type="submit"
+            [disabled]="!form.valid"
+          >
+            Search
+          </button>
+        </form>
+        <div class="list-results py-4" *ngIf="!isLoading; else loading;">
+          <div class="row row-cols-1 row-cols-md-3 g-4" *ngIf="cocktails !== null">
+            <div class="col" *ngFor="let c of cocktails">
+              <div class="card">
+                <img [src]="c.strDrinkThumb" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{c.strDrink}}</h5>
+                  <div class="labels">
+                    <span class="badge bg-secondary me-1">{{c.strCategory}}</span>
+                    <span class="badge bg-secondary me-1">{{c.strIBA}}</span>
+                    <span class="badge bg-secondary me-1">{{c.strAlcoholic}}</span>
+                    <span class="badge bg-secondary me-1">{{c.strGlass}}</span>
+                  </div>
+                  <p class="card-text pt-3">
+                    <span *ngIf="lang === 'EN'">{{c.strInstructions}}</span>
+                    <span *ngIf="lang === 'ES'">{{c.strInstructionsES ?? 'No translation in Español'}}</span>
+                    <span *ngIf="lang === 'DE'">{{c.strInstructionsDE ?? 'No translation in Deutsch'}}</span>
+                    <span *ngIf="lang === 'FR'">{{c.strInstructionsFR ?? 'No translation in Français'}}</span>
+                    <span *ngIf="lang === 'IT'">{{c.strInstructionsIT ?? 'No translation in Italiano'}}</span>
+                    <span *ngIf="lang === 'ZH-HANS'">{{c['strInstructionsZH-HANS'] ?? 'No translation in 简体中文'}}</span>
+                    <span *ngIf="lang === 'ZH-HANT'">{{c['strInstructionsZH-HANT'] ?? 'No translation in 繁體中文'}}</span>
+                  </p>
+                </div>
+                <div class="card-footer text-end">
+                  <a [routerLink]="'/cocktail/' + c.strDrink" class="btn btn-primary">View</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="alert alert-warning text-center" role="alert" *ngIf="cocktails === null">
+            No results found!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

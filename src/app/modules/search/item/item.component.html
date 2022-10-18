@@ -1,0 +1,109 @@
+<ng-template #loading>
+  <div class="text-center">LOADING...</div>
+</ng-template>
+<div class="page py-5">
+  <div class="container" *ngIf="!isLoading; else loading">
+    <div class="row">
+      <div class="col-12 col-sm-1"></div>
+      <div class="col-12 col-sm-10">
+        <h1>{{ cocktail.strDrink }}</h1>
+        <div class="row pt-2">
+          <div class="col-12 col-sm-4">
+            <figure class="figure" width="100%">
+              <img [src]="cocktail.strDrinkThumb" class="figure-img img-fluid rounded" alt="{{ cocktail.strDrink }}">
+              <figcaption class="figure-caption">{{cocktail.strImageSource}} {{cocktail.strImageAttribution}}</figcaption>
+            </figure>
+            <div class="labels pt-1">
+              <span class="badge bg-secondary me-1">{{
+                cocktail.strCategory
+              }}</span>
+              <span class="badge bg-secondary me-1">{{ cocktail.strIBA }}</span>
+              <span class="badge bg-secondary me-1">{{
+                cocktail.strAlcoholic
+              }}</span>
+              <span class="badge bg-secondary me-1">{{
+                cocktail.strGlass
+              }}</span>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <section class="ingredients mb-3">
+              <h4>Ingredients</h4>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngIf="cocktail.strIngredient1">
+                  {{ cocktail.strIngredient1 }} - {{ cocktail.strMeasure1 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient2">
+                  {{ cocktail.strIngredient2 }} - {{ cocktail.strMeasure2 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient3">
+                  {{ cocktail.strIngredient3 }} - {{ cocktail.strMeasure3 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient4">
+                  {{ cocktail.strIngredient4 }} - {{ cocktail.strMeasure4 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient5">
+                  {{ cocktail.strIngredient5 }} - {{ cocktail.strMeasure5 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient6">
+                  {{ cocktail.strIngredient6 }} - {{ cocktail.strMeasure6 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient7">
+                  {{ cocktail.strIngredient7 }} - {{ cocktail.strMeasure7 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient8">
+                  {{ cocktail.strIngredient8 }} - {{ cocktail.strMeasure8 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient9">
+                  {{ cocktail.strIngredient9 }} - {{ cocktail.strMeasure9 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient10">
+                  {{ cocktail.strIngredient10 }} - {{ cocktail.strMeasure10 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient11">
+                  {{ cocktail.strIngredient11 }} - {{ cocktail.strMeasure11 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient12">
+                  {{ cocktail.strIngredient12 }} - {{ cocktail.strMeasure12 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient13">
+                  {{ cocktail.strIngredient13 }} - {{ cocktail.strMeasure13 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient14">
+                  {{ cocktail.strIngredient14 }} - {{ cocktail.strMeasure14 }}
+                </li>
+                <li class="list-group-item" *ngIf="cocktail.strIngredient15">
+                  {{ cocktail.strIngredient15 }} - {{ cocktail.strMeasure15 }}
+                </li>
+              </ul>
+            </section>
+            <section class="instructions">
+              <h4>Instructions</h4>
+              <span *ngIf="lang === 'EN'">{{ cocktail.strInstructions }}</span>
+              <span *ngIf="lang === 'ES'">{{
+                cocktail.strInstructionsES ?? "No translation in Español"
+              }}</span>
+              <span *ngIf="lang === 'DE'">{{
+                cocktail.strInstructionsDE ?? "No translation in Deutsch"
+              }}</span>
+              <span *ngIf="lang === 'FR'">{{
+                cocktail.strInstructionsFR ?? "No translation in Français"
+              }}</span>
+              <span *ngIf="lang === 'IT'">{{
+                cocktail.strInstructionsIT ?? "No translation in Italiano"
+              }}</span>
+              <span *ngIf="lang === 'ZH-HANS'">{{
+                cocktail["strInstructionsZH-HANS"] ??
+                  "No translation in 简体中文"
+              }}</span>
+              <span *ngIf="lang === 'ZH-HANT'">{{
+                cocktail["strInstructionsZH-HANT"] ??
+                  "No translation in 繁體中文"
+              }}</span>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
